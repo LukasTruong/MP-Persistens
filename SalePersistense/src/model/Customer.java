@@ -1,4 +1,4 @@
-package modul;
+package model;
 
 public class Customer {
 
