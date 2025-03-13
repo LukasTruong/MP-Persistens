@@ -9,9 +9,8 @@ public class SaleOrder {
 	private int saleOrderNo;
 	private Customer customer;
 	private OrderLine orderline;
-
+	private LocalDate date;
 	
-private LocalDate date;
 public LocalDate getDate() {
 	return date;
 }
