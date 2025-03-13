@@ -5,6 +5,7 @@ import db.SaleOrderDAO;
 import db.SaleOrderDB;
 import model.SaleOrder;
 import model.Customer;
+import model.OrderLine;
 import model.Product;
 
 public class OrderController {
@@ -29,11 +30,14 @@ public class OrderController {
 		return customerCtrl.findCustomerByPhoneNo(phoneNo);
 	}
 	
-	public Product addProduct(int productNo) throws DataAccessException {
-		return productCtrl.findProductByProductNo(productNo);
+	public Product addProductToOrderLine(int productNo, int quantity) throws DataAccessException {
+		Product currProduct = productCtrl.findProductByProductNo(productNo);
+		saleOrder.addOrderToOrderLine(currProduct, quantity);
+		return currProduct;
 	}
 	
-	public SaleOrder confirmOrder() {
+	
+	public SaleOrder confirmOrder() throws DataAccessException {
 		if(saleOrder.getCustomer() != null && saleOrder.getOrderline() != null) {
 			saleOrderDAO.confirmOrder();
 		}

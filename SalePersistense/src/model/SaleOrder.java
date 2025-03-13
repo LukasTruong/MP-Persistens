@@ -1,6 +1,8 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SaleOrder {
 	private LocalDate date;
@@ -8,7 +10,7 @@ public class SaleOrder {
 	private String deliveryDate;
 	private int saleOrderNo;
 	private Customer customer;
-	private OrderLine orderline;
+	private List<OrderLine> orderLines;
 
 	
 public SaleOrder() {
@@ -17,8 +19,8 @@ public SaleOrder() {
 		deliveryDate = "00-00-0000";
 		saleOrderNo = 0;
 		this.customer = null;
-		this.orderline = null;
 		date = LocalDate.now();
+		orderLines = new ArrayList<>();
 	}
 
 public LocalDate getDate() {
@@ -51,10 +53,16 @@ public Customer getCustomer() {
 public void setCustomer(Customer customer) {
 	this.customer = customer;
 }
-public OrderLine getOrderline() {
-	return orderline;
+public List<OrderLine> getOrderline() {
+	return orderLines;
 }
 public void setOrderline(OrderLine orderline) {
-	this.orderline = orderline;
+	this.orderLines.add(orderline);
+}
+
+public void addOrderToOrderLine(Product currProduct, int quantity) {
+	OrderLine newOrderLine = new OrderLine(quantity);
+	newOrderLine.setProduct(currProduct);
+	this.setOrderline(newOrderLine);
 }
 }

@@ -1,7 +1,9 @@
 package db;
 
+import model.SaleOrder;
+
 public interface SaleOrderDAO {
 
-	public void confirmOrder();
+	public SaleOrder confirmOrder() throws DataAccessException;
 
 }
