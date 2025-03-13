@@ -1,5 +1,13 @@
 package db;
 
-public class CustomerDB {
+import model.Customer;
+
+public class CustomerDB implements CustomerDAO {
+
+	@Override
+	public Customer findCustomerByPhoneNo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
