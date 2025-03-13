@@ -4,6 +4,6 @@ import model.Customer;
 
 public interface CustomerDAO {
 
-	Customer findCustomerByPhoneNo();
+	Customer findCustomerByPhoneNo(int phoneNo);
 
 }
