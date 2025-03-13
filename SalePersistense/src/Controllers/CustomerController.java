@@ -12,8 +12,8 @@ public class CustomerController {
 		this.customerDAO = new CustomerDB();
 	}
 
-	public Customer findCustomerByPhoneNo() {
-		return customerDAO.findCustomerByPhoneNo();
+	public Customer findCustomerByPhoneNo(int phoneNo) {
+		return customerDAO.findCustomerByPhoneNo(phoneNo);
 	}
 
 }

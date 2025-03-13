@@ -11,15 +11,14 @@ public class SaleOrder {
 	private OrderLine orderline;
 
 	
-public SaleOrder(String deliveryStatus, String deliveryDate, int saleOrderNo, Customer customer,
-			OrderLine orderline, LocalDate date) {
+public SaleOrder() {
 		super();
-		this.deliveryStatus = deliveryStatus;
-		this.deliveryDate = deliveryDate;
-		this.saleOrderNo = saleOrderNo;
-		this.customer = customer;
-		this.orderline = orderline;
-		this.date = date;
+		deliveryStatus = "Pending";
+		deliveryDate = "00-00-0000";
+		saleOrderNo = 0;
+		this.customer = null;
+		this.orderline = null;
+		date = LocalDate.now();
 	}
 
 public LocalDate getDate() {
