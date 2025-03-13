@@ -3,6 +3,8 @@ package Controllers;
 import db.SaleOrderDAO;
 import db.SaleOrderDB;
 import model.SaleOrder;
+import model.Customer;
+import model.Product;
 
 public class OrderController {
 	private ProductController productCtrl;
@@ -23,9 +25,18 @@ public class OrderController {
 	}
 	
 	public Customer addCustomer(int phoneNo) {
-		Customer currCustomer = customerCtrl.findCustomerByPhoneNo(phoneNo);
-		return currCustomer;
+		return customerCtrl.findCustomerByPhoneNo(phoneNo);
 	}
 	
-
+	public Product addProduct(int productNo) {
+		return productCtrl.findProductByProductNo(productNo);
+	}
+	
+	public SaleOrder confirmOrder() {
+		if(saleOrder.getCustomer() != null && saleOrder.getOrderline() != null) {
+			saleOrder.confirmOrder();
+			return saleOrder;
+		}
+	}
+	
 }
