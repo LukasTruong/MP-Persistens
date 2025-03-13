@@ -15,7 +15,7 @@ import model.Product;
 
 public class ProductDB implements ProductDAO{
 	private static final String FIND_ALL_Q =
-			"select name, purchasePrice, salesPrice, countryOfOrigin, "
+			"select name, purchasePrice, salesPrice, rentPrice, countryOfOrigin, "
 			+ "	minStock, amount, reservedAmount, productNo,"
 			+ "	productType from [product]";
 	private static final String FIND_BY_PRODUCTNO_Q =

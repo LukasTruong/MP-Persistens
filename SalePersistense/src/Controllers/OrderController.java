@@ -1,5 +1,6 @@
 package Controllers;
 
+import db.DataAccessException;
 import db.SaleOrderDAO;
 import db.SaleOrderDB;
 import model.SaleOrder;
@@ -13,7 +14,7 @@ public class OrderController {
 	private SaleOrder saleOrder;
 	
 	
-	public OrderController() {
+	public OrderController() throws DataAccessException {
 		this.productCtrl = new ProductController();
 		this.customerCtrl = new CustomerController();
 		this.saleOrderDAO = new SaleOrderDB();
@@ -28,7 +29,7 @@ public class OrderController {
 		return customerCtrl.findCustomerByPhoneNo(phoneNo);
 	}
 	
-	public Product addProduct(int productNo) {
+	public Product addProduct(int productNo) throws DataAccessException {
 		return productCtrl.findProductByProductNo(productNo);
 	}
 	

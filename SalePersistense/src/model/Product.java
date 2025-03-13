@@ -86,5 +86,13 @@ public class Product {
 	public void setProductType(String productType) {
 		this.productType = productType;
 	}
+	@Override
+	public String toString() {
+		return "Product [purchasePrice=" + purchasePrice + ", salesPrice=" + salesPrice + ", rentPrice=" + rentPrice
+				+ ", countryOfOrigin=" + countryOfOrigin + ", minStock=" + minStock + ", amount=" + amount
+				+ ", reservedAmount=" + reservedAmount + ", productNo=" + productNo + ", name=" + name
+				+ ", productType=" + productType + "]";
+	}
+	
 	
 }
