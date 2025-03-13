@@ -6,12 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import model.Product;
-//FIND_BY_PRODUCTNO_Q
 
-/*"select name, purchasePrice, salesPrice, countryOfOrigin, \r\n"
-+ "	minStock, amount, reservedAmount, productNo,\r\n"
-+ "	productType\r\n"
-+ "	from [product] where productNo = 7001"*/
 
 public class ProductDB implements ProductDAO{
 	private static final String FIND_ALL_Q =
