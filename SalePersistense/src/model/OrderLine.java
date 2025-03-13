@@ -1,6 +1,4 @@
-package models;
-
-import models.Product;
+package model;
 
 public class OrderLine {
 		private int quantity; // Quantity of the product in the order
