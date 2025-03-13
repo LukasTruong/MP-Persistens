@@ -9,8 +9,17 @@ public class Product {
 	private int amount;
 	private int reservedAmount;
 	private int productNo;	
-	
 	private String name; 
+	
+	
+	public Product(double purchasePrice, double rentPrice, String countryOfOrigin, int minStock, String name) {
+		super();
+		this.purchasePrice = purchasePrice;
+		this.rentPrice = rentPrice;
+		this.countryOfOrigin = countryOfOrigin;
+		this.minStock = minStock;
+		this.name = name;
+	}
 	public String getName() {
 		return name;
 	}
