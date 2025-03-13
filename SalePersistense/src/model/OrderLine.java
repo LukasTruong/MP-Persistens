@@ -10,8 +10,11 @@ public class OrderLine {
 		 * 
 		 * @param quantity The quantity of the product. Must be greater than 0.
 		 */
-		public OrderLine(int quantity) {
+
+		public OrderLine(int quantity, Product product, double salePrice) {
 			this.quantity = quantity;
+			this.product = product;
+			this.salePrice = salePrice;
 		}
 
 		public int getQuantity() {
