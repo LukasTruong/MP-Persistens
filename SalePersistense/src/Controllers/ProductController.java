@@ -12,8 +12,8 @@ public ProductController() {
 	this.productDAO = new ProductDB();
 }
 
-public Product findProductByProductNo() {
-	return productDAO.findProductByProductNo();
+public Product findProductByProductNo(int productNo) {
+	return productDAO.findProductByProductNo(productNo);
 }
 
 }
