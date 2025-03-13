@@ -4,9 +4,9 @@ public class Private extends Customer{
 	
 	private int customerNo;
 	
-	public Private(int customerNo, String name, String address, String zipCode, String city, String country, String email) {
+	public Private(int customerNo, String name, String street, int houseNo, String floor, String zipCode, String city, String country, String email, int phone) {
 	
-		super(name, address, zipCode, city, country, email);
+		super(name, street, houseNo, floor, zipCode, city, country, email, phone);
 		this.customerNo = customerNo;
 	}
 

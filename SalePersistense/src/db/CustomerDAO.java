@@ -4,6 +4,6 @@ import model.Customer;
 
 public interface CustomerDAO {
 
-	Customer findCustomerByPhoneNo(int phoneNo);
+	Customer findCustomerByPhoneNo(int phoneNo)throws DataAccessException;
 
 }

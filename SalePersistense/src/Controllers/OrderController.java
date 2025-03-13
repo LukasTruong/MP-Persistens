@@ -26,7 +26,9 @@ public class OrderController {
 		return saleOrder;
 	}
 	
-	public Customer addCustomer(int phoneNo) {
+	public Customer addCustomer(int phoneNo) throws DataAccessException {
+		Customer currCustomer = customerCtrl.findCustomerByPhoneNo(phoneNo);
+		saleOrder.setCustomer(currCustomer);
 		return customerCtrl.findCustomerByPhoneNo(phoneNo);
 	}
 	

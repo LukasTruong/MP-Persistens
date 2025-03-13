@@ -2,20 +2,26 @@ package model;
 
 public class Customer {
 private String name;
-private String address;
+private String street;
+private int houseNo;
+private String floor;
 private String zipCode;
 private String city;
 private String country;
 private String email;
+private int phone;
 
-public Customer(String name, String address, String zipCode, String city, String country, String email) {
+public Customer(String name, String street, int houseNo, String floor, String zipCode, String city, String country, String email, int phone) {
 	super();
 	this.name = name;
-	this.address = address;
+	this.street = street;
+	this.houseNo = houseNo;
+	this.floor = floor;
 	this.zipCode = zipCode;
 	this.city = city;
 	this.country = country;
 	this.email = email;
+	this.phone = phone;
 }
 
 public String getName() {
@@ -26,12 +32,28 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public String getAddress() {
-	return address;
+public String getStreet() {
+	return street;
 }
 
-public void setAddress(String address) {
-	this.address = address;
+public void setStreet(String street) {
+	this.street = street;
+}
+
+public int getHouseNo() {
+	return houseNo;
+}
+
+public void setHouseNo(int houseNo) {
+	this.houseNo = houseNo;
+}
+
+public String getFloor() {
+	return floor;
+}
+
+public void setFloor(String floor) {
+	this.floor = floor;
 }
 
 public String getZipCode() {
@@ -65,6 +87,24 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
+
+public int getPhone() {
+	return phone;
+}
+
+public void setPhone(int phone) {
+	this.phone = phone;
+}
+
+@Override
+public String toString() {
+	return "Customer [name=" + name + ", street=" + street + ", houseNo=" + houseNo + ", floor=" + floor + ", zipCode="
+			+ zipCode + ", city=" + city + ", country=" + country + ", email=" + email + ", phone=" + phone + "]";
+}
+
+
+
+
 
 
 }
