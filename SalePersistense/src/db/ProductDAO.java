@@ -4,6 +4,6 @@ import model.Product;
 
 public interface ProductDAO {
 
-	Product findProductByProductNo();
+	Product findProductByProductNo(int productNo);
 
 }
