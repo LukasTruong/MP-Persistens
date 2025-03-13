@@ -1,9 +1,10 @@
 package model;
 
 public class OrderLine {
-		private int quantity; // Quantity of the product in the order
-		private Product product; // The product associated with this order line
-		private double salePrice;
+	
+	private int quantity; // Quantity of the product in the order
+	private Product product; // The product associated with this order line
+	private double salePrice;
 
 		/**
 		 * Constructs an OrderLine object with the specified quantity.
@@ -11,9 +12,8 @@ public class OrderLine {
 		 * @param quantity The quantity of the product. Must be greater than 0.
 		 */
 
-		public OrderLine(int quantity, Product product, double salePrice) {
+		public OrderLine(int quantity, double salePrice) {
 			this.quantity = quantity;
-			this.product = product;
 			this.salePrice = salePrice;
 		}
 
