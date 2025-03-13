@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 
 public class SaleOrder {
-
+	private LocalDate date;
 	private String deliveryStatus;
 	private String deliveryDate;
 	private int saleOrderNo;
@@ -11,7 +11,17 @@ public class SaleOrder {
 	private OrderLine orderline;
 
 	
-private LocalDate date;
+public SaleOrder(String deliveryStatus, String deliveryDate, int saleOrderNo, Customer customer,
+			OrderLine orderline, LocalDate date) {
+		super();
+		this.deliveryStatus = deliveryStatus;
+		this.deliveryDate = deliveryDate;
+		this.saleOrderNo = saleOrderNo;
+		this.customer = customer;
+		this.orderline = orderline;
+		this.date = date;
+	}
+
 public LocalDate getDate() {
 	return date;
 }
