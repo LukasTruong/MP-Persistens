@@ -3,9 +3,8 @@ package model;
 public class Clothing extends Product{
 	private int size;
 	private String colour;
-	
-	public Clothing(int size, String colour, double purchasePrice, double rentPrice, String countryOfOrigin, int minStock, String name) {
-		super(purchasePrice, rentPrice, countryOfOrigin, minStock, name);
+	public Clothing(String name, double purchasePrice, double salesPrice ,double rentPrice, String countryOfOrigin, int minStock, int productNo, String productType, int size, String colour) {
+		super(name, purchasePrice, salesPrice ,rentPrice, countryOfOrigin, minStock, productNo, productType);
 		this.size = size;
 		this.colour = colour;
 	}
