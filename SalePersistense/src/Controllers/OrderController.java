@@ -34,9 +34,9 @@ public class OrderController {
 	
 	public SaleOrder confirmOrder() {
 		if(saleOrder.getCustomer() != null && saleOrder.getOrderline() != null) {
-			saleOrder.confirmOrder();
-			return saleOrder;
+			saleOrderDAO.confirmOrder();
 		}
+		return saleOrder;
 	}
 	
 }
