@@ -3,6 +3,7 @@ package model;
 public class Product {
 
 	private double purchasePrice; 
+	private double salesPrice;
 	private double rentPrice;
 	private String countryOfOrigin;
 	private int minStock;
@@ -10,15 +11,20 @@ public class Product {
 	private int reservedAmount;
 	private int productNo;	
 	private String name; 
+	private String productType;
 	
-	
-	public Product(double purchasePrice, double rentPrice, String countryOfOrigin, int minStock, String name) {
+	public Product(String name, double purchasePrice, double salesPrice ,double rentPrice, String countryOfOrigin, int minStock, int productNo, String productType) {
 		super();
+		this.name = name;
 		this.purchasePrice = purchasePrice;
+		this.salesPrice = salesPrice;
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
 		this.minStock = minStock;
-		this.name = name;
+		this.amount = 0;
+		this.reservedAmount = 0;
+		this.productNo = 0;
+		this.productType = productType;
 	}
 	public String getName() {
 		return name;
@@ -67,6 +73,18 @@ public class Product {
 	}
 	public void setProductNo(int productNo) {
 		this.productNo = productNo;
+	}
+	public double getSalesPrice() {
+		return salesPrice;
+	}
+	public void setSalesPrice(double salesPrice) {
+		this.salesPrice = salesPrice;
+	}
+	public String getProductType() {
+		return productType;
+	}
+	public void setProductType(String productType) {
+		this.productType = productType;
 	}
 	
 }
