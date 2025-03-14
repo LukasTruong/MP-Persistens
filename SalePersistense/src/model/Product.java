@@ -13,7 +13,7 @@ public class Product {
 	private String name; 
 	private String productType;
 	
-	public Product(String name, double purchasePrice, double salesPrice ,double rentPrice, String countryOfOrigin, int minStock, int productNo, String productType) {
+	public Product(String name, double purchasePrice, double salesPrice ,double rentPrice, String countryOfOrigin, int minStock, int amount, int reservedAmount, int productNo, String productType) {
 		super();
 		this.name = name;
 		this.purchasePrice = purchasePrice;
@@ -21,9 +21,9 @@ public class Product {
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
 		this.minStock = minStock;
-		this.amount = 0;
-		this.reservedAmount = 0;
-		this.productNo = 0;
+		this.amount = amount;
+		this.reservedAmount = reservedAmount;;
+		this.productNo = productNo;
 		this.productType = productType;
 	}
 	public String getName() {

@@ -13,9 +13,12 @@ import model.Product;
 
 public class ProductDB implements ProductDAO{
 	private static final String FIND_ALL_Q =
-			"select name, purchasePrice, salesPrice, rentPrice, countryOfOrigin, "
-			+ "	minStock, amount, reservedAmount, productNo,"
-			+ "	productType from [product]";
+		    "SELECT p.name, p.purchasePrice, p.salesPrice, p.rentPrice, p.countryOfOrigin, p.minStock, p.amount, p.reservedAmount, p.productNo, "
+		    + "       p.productType, c.size, c.colour, e.type, e.description, g.calibre, g.material "
+		    + "FROM product p "
+		    + "LEFT JOIN clothing c ON p.id = c.fk_productId "
+		    + "LEFT JOIN equipment e ON p.id = e.fk_productId "
+		    + "LEFT JOIN gunReplica g ON p.id = g.fk_productId ";
 	private static final String FIND_BY_PRODUCTNO_Q =
 			FIND_ALL_Q + "where productNo = ?";
 	private PreparedStatement findAllPS, findByProductNoPS;
@@ -54,13 +57,13 @@ public class ProductDB implements ProductDAO{
 				rs.getDouble("rentPrice"),
 				rs.getString("countryOfOrigin"),
 				rs.getInt("minStock"),
-				/*rs.getInt("amount"),
-				rs.getInt("reservedAmount"),*/
+				rs.getInt("amount"),
+				rs.getInt("reservedAmount"),
 				rs.getInt("productNo"),
 				rs.getString("productType")
 				);
 		
-		if(rs.getObject("productType") == "Equipment") {
+		if(rs.getObject("productType").equals("Equipment")) {
 			p = new Equipment(
 					rs.getString("name"),
 					rs.getDouble("purchasePrice"),
@@ -68,14 +71,14 @@ public class ProductDB implements ProductDAO{
 					rs.getDouble("rentPrice"),
 					rs.getString("countryOfOrigin"),
 					rs.getInt("minStock"),
-					/*rs.getInt("amount"),
-					rs.getInt("reservedAmount"),*/
+					rs.getInt("amount"),
+					rs.getInt("reservedAmount"),
 					rs.getInt("productNo"),
 					rs.getString("productType"),
 					rs.getString("type"),
 					rs.getString("description")
 					);
-		}else if(rs.getObject("productType") == "Clothing") {
+		}else if(rs.getObject("productType") != null && rs.getObject("productType").equals("Clothing")) {
 			p = new Clothing(
 					rs.getString("name"),
 					rs.getDouble("purchasePrice"),
@@ -83,14 +86,14 @@ public class ProductDB implements ProductDAO{
 					rs.getDouble("rentPrice"),
 					rs.getString("countryOfOrigin"),
 					rs.getInt("minStock"),
-					/*rs.getInt("amount"),
-					rs.getInt("reservedAmount"),*/
+					rs.getInt("amount"),
+					rs.getInt("reservedAmount"),
 					rs.getInt("productNo"),
 					rs.getString("productType"),
-					rs.getInt("size"),
+					rs.getString("size"),
 					rs.getString("colour")
 					);
-		}else if(rs.getObject("productType") == "Gun Replica") {
+		}else if(rs.getObject("productType").equals("Gun Replica")) {
 			p = new GunReplica(
 					rs.getString("name"),
 					rs.getDouble("purchasePrice"),
@@ -98,8 +101,8 @@ public class ProductDB implements ProductDAO{
 					rs.getDouble("rentPrice"),
 					rs.getString("countryOfOrigin"),
 					rs.getInt("minStock"),
-					/*rs.getInt("amount"),
-					rs.getInt("reservedAmount"),*/
+					rs.getInt("amount"),
+					rs.getInt("reservedAmount"),
 					rs.getInt("productNo"),
 					rs.getString("productType"),
 					rs.getString("calibre"),

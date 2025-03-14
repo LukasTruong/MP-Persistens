@@ -60,7 +60,8 @@ public class SaleOrderDB implements SaleOrderDAO {
             addOrderLinePS.setInt(1, orderLine.getQuantity());
             addOrderLinePS.setDouble(2, orderLine.getSalePrice());
             addOrderLinePS.setInt(3, fk_saleOrderId);
-            addOrderLinePS.setInt(4, orderLine.getProduct().getProductNo()); 
+            addOrderLinePS.setNull(4, java.sql.Types.INTEGER);
+            addOrderLinePS.setInt(5, orderLine.getProduct().getProductNo()); 
             addOrderLinePS.executeUpdate();
         }
 

@@ -14,7 +14,7 @@ public class OrderLine {
 
 		public OrderLine(int quantity) {
 			this.quantity = quantity;
-			this.salePrice = getProduct().getSalesPrice();
+			this.salePrice = 0;
 		}
 
 		public int getQuantity() {
@@ -31,6 +31,9 @@ public class OrderLine {
 
 		public void setProduct(Product product) {
 			this.product = product;
+			if(product != null) {
+				 this.salePrice = product.getSalesPrice();
+			}
 		}
 		public double getSalePrice() {
 			return salePrice;
