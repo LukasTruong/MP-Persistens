@@ -24,6 +24,13 @@ public class Clothing extends Product{
 	public void setColour(String colour) {
 		this.colour = colour;
 	}
+
+	@Override
+	public String toString() {
+		return "Clothing [size=" + size + ", colour=" + colour + " , " + super.toString() + "]";
+	}
+	
+	
 	
 	
 	

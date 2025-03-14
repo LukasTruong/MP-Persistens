@@ -26,5 +26,10 @@ public void setDescription(String description) {
 	this.description = description;
 }
 
+@Override
+public String toString() {
+	return "Equipment [type=" + type + ", description=" + description + " , " + super.toString() + "]";
+}
+
 
 }

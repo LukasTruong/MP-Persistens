@@ -26,5 +26,10 @@ public void setMaterial(String material) {
 	this.material = material;
 }
 
+@Override
+public String toString() {
+	return "GunReplica [calibre=" + calibre + ", material=" + material + " , " + super.toString() + "]";
+}
+
 
 }
