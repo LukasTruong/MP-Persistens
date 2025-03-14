@@ -13,6 +13,7 @@ public class OrderController {
 	private CustomerController customerCtrl;
 	private SaleOrderDAO saleOrderDAO;
 	private SaleOrder saleOrder;
+
 	
 	
 	public OrderController() throws DataAccessException {
@@ -21,11 +22,19 @@ public class OrderController {
 		this.saleOrderDAO = new SaleOrderDB();
 	}
 	
-	public SaleOrder createSaleOrder() {
+	public SaleOrder createSaleOrder() throws DataAccessException {
+		int newSaleOrderNo = getNextSaleOrderNo();
 		saleOrder = new SaleOrder();
+		saleOrder.setSaleOrderNo(newSaleOrderNo);
 		return saleOrder;
 	}
 	
+	
+	private int getNextSaleOrderNo() throws DataAccessException {
+		int maxSaleOrderNo = saleOrderDAO.getMaxSaleOrderNo();
+		return maxSaleOrderNo + 1;
+	}
+
 	public Customer addCustomer(int phoneNo) throws DataAccessException {
 		Customer currCustomer = customerCtrl.findCustomerByPhoneNo(phoneNo);
 		saleOrder.setCustomer(currCustomer);

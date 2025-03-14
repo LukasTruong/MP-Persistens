@@ -19,13 +19,19 @@ public class SaleOrderDB implements SaleOrderDAO {
 			+ " VALUES (?, ?, ?, ?, ?)";
 	 private static final String GET_CUSTOMER_ID_Q = 
 		        "SELECT id FROM customer WHERE phoneNo = ?";
-	private PreparedStatement confirmOrderPS, addOrderLinePS, getCustomerIdPS;
+	 private static final String FIND_BY_PRODUCTNO_Q =
+		        "SELECT id FROM product WHERE productNo = ?";
+	 private static final String FIND_MAX_SALEORDERNO_Q =
+		        "SELECT MAX(saleOrderNo) AS maxSaleOrderNo FROM saleOrder";
+	private PreparedStatement confirmOrderPS, addOrderLinePS, getCustomerIdPS, findByProductNoPS, findMaxSaleOrderNoPS;
 	
 	public SaleOrderDB() throws DataAccessException {
         try {
             confirmOrderPS = DBConnection.getInstance().getConnection().prepareStatement(CONFIRM_ORDER_Q, Statement.RETURN_GENERATED_KEYS);
             addOrderLinePS = DBConnection.getInstance().getConnection().prepareStatement(ADD_ORDERLINE_Q);
             getCustomerIdPS = DBConnection.getInstance().getConnection().prepareStatement(GET_CUSTOMER_ID_Q);
+            findByProductNoPS = DBConnection.getInstance().getConnection().prepareStatement(FIND_BY_PRODUCTNO_Q);
+            findMaxSaleOrderNoPS = DBConnection.getInstance().getConnection().prepareStatement(FIND_MAX_SALEORDERNO_Q);
         } catch (SQLException e) {
             throw new DataAccessException(e, "Could not prepare statement");
         }
@@ -57,11 +63,18 @@ public class SaleOrderDB implements SaleOrderDAO {
             throw new DataAccessException(null, "Failed to retrieve generated saleOrderId.");
         }
         for (OrderLine orderLine : saleOrder.getOrderline()) {
+        	Product product = orderLine.getProduct();
+        	
+        	int fk_productId = getProductIdByProductNo(product.getProductNo());
+        	
+        	if (fk_productId == -1) {
+                throw new DataAccessException(null, "Product not found.");
+            }
             addOrderLinePS.setInt(1, orderLine.getQuantity());
             addOrderLinePS.setDouble(2, orderLine.getSalePrice());
             addOrderLinePS.setInt(3, fk_saleOrderId);
             addOrderLinePS.setNull(4, java.sql.Types.INTEGER);
-            addOrderLinePS.setInt(5, orderLine.getProduct().getProductNo()); 
+            addOrderLinePS.setInt(5, fk_productId); 
             addOrderLinePS.executeUpdate();
         }
 
@@ -71,4 +84,35 @@ public class SaleOrderDB implements SaleOrderDAO {
         throw new DataAccessException(e, "Could not confirm sale order");
 		}
 	}
+
+
+	private int getProductIdByProductNo(int productNo)throws SQLException, DataAccessException {
+		int productId = -1;  // Default value if no product is found
+        try {
+            findByProductNoPS.setInt(1, productNo);  // Set productNo parameter
+            ResultSet rs = findByProductNoPS.executeQuery();
+            if (rs.next()) {
+                productId = rs.getInt("id");  // Fetch the product id
+            }
+        } catch (SQLException e) {
+            throw new DataAccessException(e, "Could not retrieve product id by productNo");
+        }
+        return productId;
+	}
+
+
+	@Override
+	public int getMaxSaleOrderNo() throws DataAccessException {
+		int maxSaleOrderNo = 0;  // Default value if no sale orders are found
+        try {
+            ResultSet rs = findMaxSaleOrderNoPS.executeQuery();
+            if (rs.next()) {
+                maxSaleOrderNo = rs.getInt("maxSaleOrderNo");
+            }
+        } catch (SQLException e) {
+            throw new DataAccessException(e, "Could not retrieve max sale order number");
+        }
+        return maxSaleOrderNo;  // Only one return at the end
+    }
 }
+
