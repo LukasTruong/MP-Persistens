@@ -47,7 +47,6 @@ public class CustomerDB implements CustomerDAO {
 		}
 		
 	}
-	//String name, String address, String zipCode, String city, String country, String email
 	private Customer buildObject(ResultSet rs) throws SQLException{
 		Customer c = new Customer(
 				rs.getString("name"),
