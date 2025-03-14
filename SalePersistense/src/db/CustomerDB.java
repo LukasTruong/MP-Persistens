@@ -63,7 +63,6 @@ public class CustomerDB implements CustomerDAO {
 		
 		
 		if (rs.getObject("clubNo") != null) {
-			rs.getInt("clubNo");
 			c = new Club(
 					rs.getInt("clubNo"),
 					rs.getString("name"),
@@ -77,7 +76,6 @@ public class CustomerDB implements CustomerDAO {
 					rs.getInt("phoneNo")
 					);
 		} else if(rs.getObject("customerNo") != null) {
-			rs.getInt("clubNo");
 			c = new Private(
 					rs.getInt("customerNo"),
 					rs.getString("name"),

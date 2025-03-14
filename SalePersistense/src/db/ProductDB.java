@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.Clothing;
+import model.Equipment;
+import model.GunReplica;
 import model.Product;
 
 
@@ -56,6 +59,53 @@ public class ProductDB implements ProductDAO{
 				rs.getInt("productNo"),
 				rs.getString("productType")
 				);
+		
+		if(rs.getObject("productType") == "Equipment") {
+			p = new Equipment(
+					rs.getString("name"),
+					rs.getDouble("purchasePrice"),
+					rs.getDouble("salesPrice"),
+					rs.getDouble("rentPrice"),
+					rs.getString("countryOfOrigin"),
+					rs.getInt("minStock"),
+					/*rs.getInt("amount"),
+					rs.getInt("reservedAmount"),*/
+					rs.getInt("productNo"),
+					rs.getString("productType"),
+					rs.getString("type"),
+					rs.getString("description")
+					);
+		}else if(rs.getObject("productType") == "Clothing") {
+			p = new Clothing(
+					rs.getString("name"),
+					rs.getDouble("purchasePrice"),
+					rs.getDouble("salesPrice"),
+					rs.getDouble("rentPrice"),
+					rs.getString("countryOfOrigin"),
+					rs.getInt("minStock"),
+					/*rs.getInt("amount"),
+					rs.getInt("reservedAmount"),*/
+					rs.getInt("productNo"),
+					rs.getString("productType"),
+					rs.getInt("size"),
+					rs.getString("colour")
+					);
+		}else if(rs.getObject("productType") == "Gun Replica") {
+			p = new GunReplica(
+					rs.getString("name"),
+					rs.getDouble("purchasePrice"),
+					rs.getDouble("salesPrice"),
+					rs.getDouble("rentPrice"),
+					rs.getString("countryOfOrigin"),
+					rs.getInt("minStock"),
+					/*rs.getInt("amount"),
+					rs.getInt("reservedAmount"),*/
+					rs.getInt("productNo"),
+					rs.getString("productType"),
+					rs.getString("calibre"),
+					rs.getString("material")
+					);
+		}
 		return p;
 	}
 

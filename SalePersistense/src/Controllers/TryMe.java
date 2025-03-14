@@ -12,7 +12,7 @@ public static void main(String[] args) throws DataAccessException {
         pCtrl = new ProductController();
         cCtrl = new CustomerController();
         oCtrl = new OrderController();
-        //System.out.println(pCtrl.findProductByProductNo(7001));
+        System.out.println(pCtrl.findProductByProductNo(7001));
         System.out.println(cCtrl.findCustomerByPhoneNo(12345678));
         
     } catch (DataAccessException e) {
