@@ -87,12 +87,12 @@ public class SaleOrderDB implements SaleOrderDAO {
 
 
 	private int getProductIdByProductNo(int productNo)throws SQLException, DataAccessException {
-		int productId = -1;  // Default value if no product is found
+		int productId = -1; 
         try {
-            findByProductNoPS.setInt(1, productNo);  // Set productNo parameter
+            findByProductNoPS.setInt(1, productNo);  
             ResultSet rs = findByProductNoPS.executeQuery();
             if (rs.next()) {
-                productId = rs.getInt("id");  // Fetch the product id
+                productId = rs.getInt("id");
             }
         } catch (SQLException e) {
             throw new DataAccessException(e, "Could not retrieve product id by productNo");
@@ -103,7 +103,7 @@ public class SaleOrderDB implements SaleOrderDAO {
 
 	@Override
 	public int getMaxSaleOrderNo() throws DataAccessException {
-		int maxSaleOrderNo = 0;  // Default value if no sale orders are found
+		int maxSaleOrderNo = 0; 
         try {
             ResultSet rs = findMaxSaleOrderNoPS.executeQuery();
             if (rs.next()) {
@@ -112,7 +112,7 @@ public class SaleOrderDB implements SaleOrderDAO {
         } catch (SQLException e) {
             throw new DataAccessException(e, "Could not retrieve max sale order number");
         }
-        return maxSaleOrderNo;  // Only one return at the end
+        return maxSaleOrderNo;  
     }
 }
 
