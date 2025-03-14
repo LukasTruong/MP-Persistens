@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.Club;
 import model.Customer;
+import model.Private;
 
 public class CustomerDB implements CustomerDAO {
 	private static final String FIND_ALL_Q = "select c.name, c.phoneNo, c.email, c.clubNo, c.customerNo,"
@@ -58,6 +60,38 @@ public class CustomerDB implements CustomerDAO {
 				rs.getString("email"),
 				rs.getInt("phoneNo")
 				);
+		
+		
+		if (rs.getObject("clubNo") != null) {
+			rs.getInt("clubNo");
+			c = new Club(
+					rs.getInt("clubNo"),
+					rs.getString("name"),
+					rs.getString("street"),
+					rs.getInt("no"),
+					rs.getString("floor"),
+					rs.getString("zipCode"),
+					rs.getString("city"),
+					rs.getString("country"),
+					rs.getString("email"),
+					rs.getInt("phoneNo")
+					);
+		} else if(rs.getObject("customerNo") != null) {
+			rs.getInt("clubNo");
+			c = new Private(
+					rs.getInt("customerNo"),
+					rs.getString("name"),
+					rs.getString("street"),
+					rs.getInt("no"),
+					rs.getString("floor"),
+					rs.getString("zipCode"),
+					rs.getString("city"),
+					rs.getString("country"),
+					rs.getString("email"),
+					rs.getInt("phoneNo")
+					);
+		}
+		
 		return c;
 	}
 

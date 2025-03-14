@@ -18,4 +18,11 @@ public class Private extends Customer{
 		this.customerNo = customerNo;
 
 	}
+
+	@Override
+	public String toString() {
+		return "Private [customerNo=" + customerNo + " , " + super.toString() + "]";
+	}
+	
+	
 }

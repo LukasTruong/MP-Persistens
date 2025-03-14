@@ -17,4 +17,13 @@ public class Club extends Customer{
 			this.clubNo = clubNo;
 		
 	}
+
+		@Override
+		public String toString() {
+			return "Club [clubNo=" + clubNo + " , " + super.toString() + "]";
+		}
+
+	
+		
+	
 }

@@ -41,7 +41,7 @@ public class OrderController {
 	
 	public SaleOrder confirmOrder() throws DataAccessException {
 		if(saleOrder.getCustomer() != null && saleOrder.getOrderline() != null) {
-			saleOrderDAO.confirmOrder();
+			saleOrderDAO.confirmOrder(saleOrder);
 		}
 		return saleOrder;
 	}
